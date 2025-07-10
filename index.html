@@ -33,6 +33,13 @@
             color: white;
             padding: 40px;
             text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header:hover {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            transform: translateY(-2px);
         }
 
         .header h1 {
@@ -498,6 +505,13 @@
                 document.getElementById('checkAnswer').addEventListener('click', () => this.checkAnswer());
                 document.getElementById('restartQuiz').addEventListener('click', () => this.restartCurrentQuiz());
                 document.getElementById('newQuiz').addEventListener('click', () => this.showCourseSelection());
+                
+                // Make header clickable to return to course selection
+                document.querySelector('.header').addEventListener('click', () => {
+                    if (this.selectedCourse || this.quizStarted) {
+                        this.showCourseSelection();
+                    }
+                });
             }
 
             async loadConfiguration() {
@@ -582,19 +596,44 @@
                     <input type="checkbox" id="allModules">
                     <label for="allModules" style="cursor: pointer;">All Modules (${Object.keys(modules).length} modules)</label>
                 `;
-                allModulesOption.onclick = () => this.toggleAllModules();
+                
+                // Handle clicks on the whole div
+                allModulesOption.onclick = (e) => {
+                    // Don't toggle if the click was directly on the checkbox
+                    if (e.target.type !== 'checkbox') {
+                        this.toggleAllModules();
+                    }
+                };
+                
+                // Handle direct checkbox clicks
+                const allModulesCheckbox = allModulesOption.querySelector('#allModules');
+                allModulesCheckbox.addEventListener('click', () => this.updateAllModulesFromCheckbox());
+                
                 moduleOptions.appendChild(allModulesOption);
 
                 // Add individual module options
                 Object.entries(modules).forEach(([moduleName, modulePath]) => {
                     const moduleOption = document.createElement('div');
                     moduleOption.className = 'module-option';
-                    const moduleId = `module_${moduleName.replace(/\s+/g, '_')}`;
+                    // Sanitize module name for use as CSS ID - only letters, numbers, and underscores
+                    const moduleId = `module_${moduleName.replace(/[^a-zA-Z0-9]/g, '_')}`;
                     moduleOption.innerHTML = `
                         <input type="checkbox" id="${moduleId}" data-path="${modulePath}">
                         <label for="${moduleId}" style="cursor: pointer;">${moduleName}</label>
                     `;
-                    moduleOption.onclick = () => this.toggleModule(moduleId);
+                    
+                    // Handle clicks on the whole div
+                    moduleOption.onclick = (e) => {
+                        // Don't toggle if the click was directly on the checkbox (it will handle itself)
+                        if (e.target.type !== 'checkbox') {
+                            this.toggleModule(moduleId);
+                        }
+                    };
+                    
+                    // Handle direct checkbox clicks
+                    const checkbox = moduleOption.querySelector(`#${moduleId}`);
+                    checkbox.addEventListener('click', () => this.updateModuleFromCheckbox(moduleId));
+                    
                     moduleOptions.appendChild(moduleOption);
                 });
 
@@ -605,9 +644,20 @@
 
             toggleAllModules() {
                 const allModulesCheckbox = document.getElementById('allModules');
+                allModulesCheckbox.checked = !allModulesCheckbox.checked;
+                this.updateAllModulesState();
+            }
+
+            updateAllModulesFromCheckbox() {
+                // This is called when "All Modules" checkbox is clicked directly
+                // The checkbox state is already updated by the browser
+                this.updateAllModulesState();
+            }
+
+            updateAllModulesState() {
+                const allModulesCheckbox = document.getElementById('allModules');
                 const moduleCheckboxes = document.querySelectorAll('#moduleOptions input[type="checkbox"]:not(#allModules)');
                 
-                allModulesCheckbox.checked = !allModulesCheckbox.checked;
                 moduleCheckboxes.forEach(checkbox => {
                     checkbox.checked = allModulesCheckbox.checked;
                 });
@@ -618,7 +668,16 @@
             toggleModule(moduleId) {
                 const checkbox = document.getElementById(moduleId);
                 checkbox.checked = !checkbox.checked;
-                
+                this.updateModuleSelectionState();
+            }
+
+            updateModuleFromCheckbox(moduleId) {
+                // This is called when checkbox is clicked directly
+                // The checkbox state is already updated by the browser
+                this.updateModuleSelectionState();
+            }
+
+            updateModuleSelectionState() {
                 // Update "All Modules" checkbox state
                 const allCheckboxes = document.querySelectorAll('#moduleOptions input[type="checkbox"]:not(#allModules)');
                 const checkedCheckboxes = document.querySelectorAll('#moduleOptions input[type="checkbox"]:not(#allModules):checked');
