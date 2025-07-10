@@ -170,6 +170,12 @@
         .module-option input[type="checkbox"] {
             margin-right: 15px;
             transform: scale(1.2);
+            flex-shrink: 0;
+        }
+
+        .module-option label {
+            flex: 1;
+            cursor: pointer;
         }
 
         .all-modules {
@@ -594,20 +600,19 @@
                 allModulesOption.className = 'module-option all-modules';
                 allModulesOption.innerHTML = `
                     <input type="checkbox" id="allModules">
-                    <label for="allModules" style="cursor: pointer;">All Modules (${Object.keys(modules).length} modules)</label>
+                    <label for="allModules" style="cursor: pointer; flex: 1;">All Modules (${Object.keys(modules).length} modules)</label>
                 `;
                 
-                // Handle clicks on the whole div
+                // Handle clicks on the div background only
                 allModulesOption.onclick = (e) => {
-                    // Don't toggle if the click was directly on the checkbox
-                    if (e.target.type !== 'checkbox') {
+                    if (e.target === allModulesOption) {
                         this.toggleAllModules();
                     }
                 };
                 
-                // Handle direct checkbox clicks
+                // Handle checkbox changes (from any source)
                 const allModulesCheckbox = allModulesOption.querySelector('#allModules');
-                allModulesCheckbox.addEventListener('click', () => this.updateAllModulesFromCheckbox());
+                allModulesCheckbox.addEventListener('change', () => this.updateAllModulesFromCheckbox());
                 
                 moduleOptions.appendChild(allModulesOption);
 
@@ -619,20 +624,20 @@
                     const moduleId = `module_${moduleName.replace(/[^a-zA-Z0-9]/g, '_')}`;
                     moduleOption.innerHTML = `
                         <input type="checkbox" id="${moduleId}" data-path="${modulePath}">
-                        <label for="${moduleId}" style="cursor: pointer;">${moduleName}</label>
+                        <label for="${moduleId}" style="cursor: pointer; flex: 1;">${moduleName}</label>
                     `;
                     
-                    // Handle clicks on the whole div
+                    // Handle clicks on the div (but not on checkbox or label)
                     moduleOption.onclick = (e) => {
-                        // Don't toggle if the click was directly on the checkbox (it will handle itself)
-                        if (e.target.type !== 'checkbox') {
+                        // Only toggle if clicked on the div background (not checkbox or label)
+                        if (e.target === moduleOption) {
                             this.toggleModule(moduleId);
                         }
                     };
                     
-                    // Handle direct checkbox clicks
+                    // Handle checkbox changes (from any source: direct click, label click, or programmatic)
                     const checkbox = moduleOption.querySelector(`#${moduleId}`);
-                    checkbox.addEventListener('click', () => this.updateModuleFromCheckbox(moduleId));
+                    checkbox.addEventListener('change', () => this.updateModuleFromCheckbox(moduleId));
                     
                     moduleOptions.appendChild(moduleOption);
                 });
