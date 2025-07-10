@@ -1,0 +1,287 @@
+# FOR509 Training Day 1 Questions
+metadata:
+  title: "FOR509 Day 1 Practice Questions"
+  created_by: "LLM Assistant"
+  content_source: "FOR509 Training Materials Day 1"
+  question_count: 30
+
+questions:
+  - category: "SOF-ELK"
+    type: "multiple_choice"
+    question: "Which component of the Elastic Stack is responsible for data collection and log parsing?"
+    options:
+      - "Elasticsearch"
+      - "Logstash"
+      - "Kibana"
+      - "Beats"
+    correct_answer: "Logstash"
+    explanation: "Logstash is the data collection and log-parsing engine that reads input data, transforms and enriches it, then transports it to destinations like Elasticsearch."
+
+  - category: "SOF-ELK"
+    type: "multiple_choice"
+    question: "What is the maximum number of results that can be returned by a single Search-UnifiedAuditLog PowerShell command?"
+    options:
+      - "1,000"
+      - "5,000"
+      - "10,000"
+      - "50,000"
+    correct_answer: "5,000"
+    explanation: "The ResultSize parameter has a maximum of 5,000 results for a single PowerShell Search-UnifiedAuditLog command. For larger datasets, you need to use SessionCommand with paging."
+
+  - category: "Cloud DFIR Fundamentals"
+    type: "multiple_choice"
+    question: "Under which cloud service model does the customer have the most control over logging?"
+    options:
+      - "Software as a Service (SaaS)"
+      - "Platform as a Service (PaaS)"
+      - "Infrastructure as a Service (IaaS)"
+      - "Function as a Service (FaaS)"
+    correct_answer: "Infrastructure as a Service (IaaS)"
+    explanation: "Under IaaS, the customer has the most control over their environment and logging capabilities, as long as logs have been enabled. The customer is responsible for enabling and storing logs."
+
+  - category: "Microsoft 365"
+    type: "multiple_choice"
+    question: "Which PowerShell module is required to connect to Microsoft 365 for UAL searches with MFA support?"
+    options:
+      - "MSOnline"
+      - "AzureAD"
+      - "ExchangeOnlineManagement"
+      - "Microsoft.Graph"
+    correct_answer: "ExchangeOnlineManagement"
+    explanation: "The ExchangeOnlineManagement module is required to support authentication with MFA when connecting to Microsoft 365 for UAL searches."
+
+  - category: "Microsoft Graph API"
+    type: "multiple_choice"
+    question: "In the SolarWinds attack, what Microsoft Graph API permission was primarily used to maintain persistent email access?"
+    options:
+      - "User.Read.All"
+      - "Mail.Read or Mail.ReadWrite"
+      - "Directory.ReadWrite.All"
+      - "Sites.ReadWrite.All"
+    correct_answer: "Mail.Read or Mail.ReadWrite"
+    explanation: "The SolarWinds attackers added credentials to OAuth applications with Mail.Read or Mail.ReadWrite permissions, which granted the ability to read mail content from Exchange Online via Microsoft Graph."
+
+  - category: "SOF-ELK"
+    type: "multiple_choice"
+    question: "Which directory should you copy Microsoft 365 UAL JSON files to for automatic processing in SOF-ELK?"
+    options:
+      - "/logstash/aws"
+      - "/logstash/azure"
+      - "/logstash/microsoft365"
+      - "/logstash/gcp"
+    correct_answer: "/logstash/microsoft365"
+    explanation: "Microsoft 365 UAL JSON files should be copied to the /logstash/microsoft365 directory where filebeat will automatically detect and process them."
+
+  - category: "Cloud DFIR Fundamentals"
+    type: "multiple_choice"
+    question: "What are the two main categories of Entra ID logs for DFIR investigations?"
+    options:
+      - "Security logs and Activity logs"
+      - "Audit logs and Sign-in logs"
+      - "Identity logs and Access logs"
+      - "User logs and Admin logs"
+    correct_answer: "Security logs and Activity logs"
+    explanation: "Entra ID logs are divided into Security logs (which help identify potentially risky users) and Activity logs (which help understand user behavior)."
+
+  - category: "Microsoft 365"
+    type: "multiple_choice"
+    question: "Which UAL operation is most critical for tracking email activity in Business Email Compromise investigations?"
+    options:
+      - "UserLoggedIn"
+      - "MailItemsAccessed"
+      - "FileAccessed"
+      - "SharePointFileOperation"
+    correct_answer: "MailItemsAccessed"
+    explanation: "MailItemsAccessed is the most critical operation for tracking email activity as it provides detailed information about message access, including individual message IDs when using Bind access type."
+
+  - category: "Microsoft Graph API"
+    type: "multiple_choice"
+    question: "What is the unified endpoint for all Microsoft Graph API calls?"
+    options:
+      - "https://login.microsoftonline.com"
+      - "https://graph.microsoft.com"
+      - "https://portal.azure.com"
+      - "https://admin.microsoft.com"
+    correct_answer: "https://graph.microsoft.com"
+    explanation: "Microsoft Graph API provides a unified programming model with a single access endpoint at https://graph.microsoft.com for accessing resources in Microsoft 365 and Azure."
+
+  - category: "SOF-ELK"
+    type: "multiple_choice"
+    question: "Which Kibana tab should you start with when investigating cloud forensics data?"
+    options:
+      - "Dashboard"
+      - "Visualize Library"
+      - "Discover"
+      - "Dev Tools"
+    correct_answer: "Discover"
+    explanation: "You should start with the Discover tab as it gives you direct access to raw events and shows available fields, which is extremely useful when you're not familiar with the log source."
+
+  - category: "Cloud DFIR Fundamentals"
+    type: "multiple_choice"
+    question: "Which type of cloud access provides the most comprehensive forensic visibility?"
+    options:
+      - "VM disk snapshots"
+      - "Cloud flows"
+      - "Resource management logs"
+      - "Identity and access management logs"
+    correct_answer: "VM disk snapshots"
+    explanation: "VM disk snapshots provide the most comprehensive forensic visibility as they are full, read-only copies of virtual hard drives that can be analyzed using traditional forensic techniques."
+
+  - category: "Microsoft 365"
+    type: "multiple_choice"
+    question: "What is the difference between Bind and Sync access types in Exchange mailbox auditing?"
+    options:
+      - "Bind is for mobile devices, Sync is for desktop"
+      - "Bind records individual emails, Sync records folder synchronization"
+      - "Bind is for IMAP, Sync is for POP3"
+      - "Bind is encrypted, Sync is unencrypted"
+    correct_answer: "Bind records individual emails, Sync records folder synchronization"
+    explanation: "Bind access (used by OWA, IMAP/POP3, new Outlook) records each individual email in audit logs, while Sync access (used by classic Outlook) only records folder synchronization without individual message details."
+
+  - category: "Microsoft Graph API"
+    type: "multiple_choice"
+    question: "Which permission level is considered most dangerous for Graph API applications?"
+    options:
+      - "Delegated permissions"
+      - "Application permissions"
+      - "User permissions"
+      - "Read-only permissions"
+    correct_answer: "Application permissions"
+    explanation: "Application permissions are most dangerous because they provide global access without user context restrictions, unlike delegated permissions which are limited to the signed-in user's context."
+
+  - category: "SOF-ELK"
+    type: "multiple_choice"
+    question: "What happens to unneeded fields during Logstash processing in SOF-ELK?"
+    options:
+      - "They are encrypted"
+      - "They are compressed"
+      - "They are dropped"
+      - "They are archived"
+    correct_answer: "They are dropped"
+    explanation: "Logstash parsers only map the most important fields for DFIR and drop unneeded fields to optimize resource consumption and VM performance."
+
+  - category: "Microsoft 365"
+    type: "multiple_choice"
+    question: "Which ClientInfoString indicates the use of the 'new' Outlook client?"
+    options:
+      - "Client=MSExchangeRPC"
+      - "Client=OWA"
+      - "Client=REST"
+      - "Client=ActiveSync"
+    correct_answer: "Client=REST"
+    explanation: "The 'new' Outlook client uses the Microsoft Graph API and shows ClientInfoString as 'Client=REST', while the classic Outlook shows 'Client=MSExchangeRPC'."
+
+  - category: "Cloud DFIR Fundamentals"
+    type: "multiple_choice"
+    question: "According to the shared responsibility model, who is responsible for enabling and storing logs in IaaS environments?"
+    options:
+      - "Cloud provider only"
+      - "Customer only"
+      - "Both cloud provider and customer"
+      - "Third-party security vendor"
+    correct_answer: "Customer only"
+    explanation: "In IaaS environments, the customer is responsible for enabling and storing logs. The cloud provider manages the underlying infrastructure, but log configuration is the customer's responsibility."
+
+  - category: "Microsoft Graph API"
+    type: "multiple_choice"
+    question: "What is the most risky Graph API permission according to Microsoft's incident response playbook?"
+    options:
+      - "Mail.ReadWrite"
+      - "User.ReadWrite.All"
+      - "AppRoleAssignment.ReadWrite.All"
+      - "Files.ReadWrite.All"
+    correct_answer: "AppRoleAssignment.ReadWrite.All"
+    explanation: "AppRoleAssignment.ReadWrite.All is listed as extremely dangerous because it allows applications to manage role assignments, potentially leading to privilege escalation attacks."
+
+  - category: "Microsoft 365"
+    type: "multiple_choice"
+    question: "How long are UAL records retained for E5 license holders?"
+    options:
+      - "90 days"
+      - "180 days"
+      - "1 year"
+      - "2 years"
+    correct_answer: "1 year"
+    explanation: "E5 license holders have UAL records retained for 1 year, while other license types have 180 days retention (only 90 days for logs generated before October 17, 2023)."
+
+  - category: "SOF-ELK"
+    type: "multiple_choice"
+    question: "Which query language does Kibana use by default?"
+    options:
+      - "Lucene"
+      - "SQL"
+      - "KQL (Kibana Query Language)"
+      - "Elasticsearch DSL"
+    correct_answer: "KQL (Kibana Query Language)"
+    explanation: "Kibana uses KQL (Kibana Query Language) by default, though it can also use the Lucene language. KQL is designed to be simple and easy to use."
+
+  - category: "Cloud DFIR Fundamentals"
+    type: "multiple_choice"
+    question: "What information do cloud flows typically NOT contain?"
+    options:
+      - "Source and destination IP addresses"
+      - "Source and destination ports"
+      - "Protocol information"
+      - "Packet payload content"
+    correct_answer: "Packet payload content"
+    explanation: "Cloud flows capture metadata about network flows including IPs, ports, protocols, and timing information, but they do not contain the actual packet payload content."
+
+  - category: "SOF-ELK"
+    type: "true_false"
+    question: "SOF-ELK can search across all indices simultaneously without specifying a particular index."
+    correct_answer: false
+    explanation: "Unlike certain commercial solutions, SOF-ELK requires you to select a specific index for searching. You cannot search across all indices simultaneously."
+
+  - category: "Microsoft 365"
+    type: "true_false"
+    question: "The Unified Audit Log is enabled by default for all Microsoft 365 tenants created after October 2021."
+    correct_answer: true
+    explanation: "As of October 2021, audit logging is turned on by default for newly created tenants, though administrators can still turn it off using PowerShell."
+
+  - category: "Cloud DFIR Fundamentals"
+    type: "true_false"
+    question: "VM disk snapshots can only be taken when the virtual machine is shut down."
+    correct_answer: false
+    explanation: "VM disk snapshots can be taken while the VM is running or shut down. They are created at the hypervisor level and have no impact on the running VM."
+
+  - category: "Microsoft Graph API"
+    type: "true_false"
+    question: "The Microsoft Graph Activity Log records both the API calls and the results of any changes made."
+    correct_answer: false
+    explanation: "The Microsoft Graph Activity Log only records the API call invocations themselves, not the results of any changes. You must correlate with other logs to see the actual changes."
+
+  - category: "SOF-ELK"
+    type: "true_false"
+    question: "When importing UAL data into SOF-ELK, you must specify UTF8 encoding to ensure proper processing."
+    correct_answer: true
+    explanation: "It's important to specify UTF8 encoding when exporting UAL data to JSON files so they can be properly imported and processed by SOF-ELK."
+
+  - category: "Microsoft 365"
+    type: "true_false"
+    question: "OneDrive file operations are logged separately from SharePoint operations in the UAL."
+    correct_answer: false
+    explanation: "OneDrive is implemented as SharePoint libraries, so OneDrive file operations appear in SharePoint workload logs. You can use record type 'SharePointFileOperation' to track files regardless of access method."
+
+  - category: "Cloud DFIR Fundamentals"
+    type: "true_false"
+    question: "Data transfer costs in cloud environments are typically free when moving data into the cloud but charged when moving data out."
+    correct_answer: true
+    explanation: "As a general rule, cloud providers don't charge for data transfer into the cloud but do charge when transferring data out of the cloud or between regions."
+
+  - category: "Microsoft Graph API"
+    type: "true_false"
+    question: "All Graph API read operations generate corresponding audit log entries."
+    correct_answer: false
+    explanation: "Many Graph API read actions do not generate any audit logs. Only actions that result in changes typically generate audit entries, while read-only operations may only appear in the Microsoft Graph Activity Log."
+
+  - category: "Microsoft 365"
+    type: "true_false"
+    question: "The PowerShell Search-UnifiedAuditLog cmdlet supports filtering by Workload."
+    correct_answer: false
+    explanation: "The Search-UnifiedAuditLog cmdlet supports filtering by Operation and RecordType, but not by Workload. This is one of the limitations of the PowerShell approach."
+
+  - category: "SOF-ELK"
+    type: "true_false"
+    question: "All panels in a SOF-ELK dashboard are dynamically updated when you change search parameters or time frame."
+    correct_answer: true
+    explanation: "One of the powerful features of SOF-ELK dashboards is that all panels are dynamically updated based on any search or time parameters you enter, providing real-time filtering across all visualizations."

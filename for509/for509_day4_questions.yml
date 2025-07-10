@@ -1,0 +1,286 @@
+metadata:
+  title: "FOR509 Day 4 Practice Questions"
+  created_by: "LLM Assistant"
+  content_source: "FOR509 Training Materials Day 4"
+  question_count: 30
+
+questions:
+  - category: "Kubernetes Forensics"
+    type: "multiple_choice"
+    question: "In Kubernetes architecture, what is the primary function of the kubelet?"
+    options:
+      - "Manages cluster-wide scheduling decisions"
+      - "Acts as an agent on each node to ensure containers are running correctly"
+      - "Provides network proxy services between nodes"
+      - "Stores cluster configuration data in key-value pairs"
+    correct_answer: "Acts as an agent on each node to ensure containers are running correctly"
+    explanation: "The kubelet is an agent that runs on each node to ensure that containers and pods are running correctly and reports back to the control plane when issues occur."
+
+  - category: "Kubernetes Forensics"
+    type: "multiple_choice"
+    question: "Which cloud provider enables system-level Kubernetes logs by default and cannot disable them?"
+    options:
+      - "Amazon EKS"
+      - "Microsoft AKS"
+      - "Google GKE"
+      - "All providers enable them by default"
+    correct_answer: "Google GKE"
+    explanation: "Google's GKE has system level logs enabled by default for all accounts and this cannot be disabled, unlike AWS EKS and Azure AKS which require manual enablement."
+
+  - category: "Kubernetes Forensics"
+    type: "multiple_choice"
+    question: "What is 'container drift' in the context of Kubernetes security?"
+    options:
+      - "Containers moving between different nodes automatically"
+      - "Performance degradation of containers over time"
+      - "Changes made to a container after it has started running"
+      - "Network latency between container communications"
+    correct_answer: "Changes made to a container after it has started running"
+    explanation: "Container drift refers to changes made to a container after it's started, which is unusual since containers should be immutable and any updates should happen during the build process."
+
+  - category: "Kubernetes Forensics"
+    type: "multiple_choice"
+    question: "Which metadata service vulnerability allows attackers to escape from containers to access VM credentials?"
+    options:
+      - "http://192.168.1.1/metadata"
+      - "http://127.0.0.1/instance-data"
+      - "http://169.254.169.254/latest/meta-data"
+      - "http://10.0.0.1/cloud-metadata"
+    correct_answer: "http://169.254.169.254/latest/meta-data"
+    explanation: "The metadata service at 169.254.169.254 is available on AWS, Azure, and Google Cloud VMs and can be accessed by containers to query VM roles and retrieve security credentials."
+
+  - category: "Kubernetes Forensics"
+    type: "multiple_choice"
+    question: "What tool can be used to analyze container file systems from Kubernetes node snapshots?"
+    options:
+      - "Docker Inspector"
+      - "Container Explorer"
+      - "Kubernetes Analyzer"
+      - "Pod Scanner"
+    correct_answer: "Container Explorer"
+    explanation: "Container Explorer, developed by Google, allows investigators to mount container file systems from node snapshots to browse files that were present while containers were running."
+
+  - category: "Google Workspace Fundamentals"
+    type: "multiple_choice"
+    question: "Which Google Workspace admin role has the highest risk and provides complete access to all features?"
+    options:
+      - "Groups Admin"
+      - "User Management Admin"
+      - "Super Admin"
+      - "Services Admin"
+    correct_answer: "Super Admin"
+    explanation: "Super Admin has complete access to all Google Workspace features, including full visibility into users' data, ability to create admin roles, reset passwords, and configure security settings."
+
+  - category: "Google Workspace Fundamentals"
+    type: "multiple_choice"
+    question: "How many custom admin roles can be created in Google Workspace?"
+    options:
+      - "100"
+      - "250"
+      - "500"
+      - "750"
+    correct_answer: "750"
+    explanation: "Google Workspace allows the creation of up to 750 custom admin roles, enabling large organizations to finely segment administrative duties."
+
+  - category: "Google Workspace Fundamentals"
+    type: "multiple_choice"
+    question: "What is the key difference between Organizational Units and Groups in Google Workspace?"
+    options:
+      - "Groups are mandatory while Organizational Units are optional"
+      - "Users can exist in multiple Groups but only one Organizational Unit"
+      - "Organizational Units control permissions while Groups only manage email distribution"
+      - "Groups are hierarchical while Organizational Units are flat structures"
+    correct_answer: "Users can exist in multiple Groups but only one Organizational Unit"
+    explanation: "A user can only exist in one Organizational Unit but can be assigned to multiple Groups. Groups can also be embedded within each other, creating complex permission inheritance."
+
+  - category: "Google Workspace Evidence"
+    type: "multiple_choice"
+    question: "What is the default retention period for Google Workspace audit logs?"
+    options:
+      - "30 days"
+      - "90 days"
+      - "6 months"
+      - "1 year"
+    correct_answer: "6 months"
+    explanation: "Google Workspace generally holds all logs for 6 months, with some exceptions like email transaction logs which are only held for 30 days."
+
+  - category: "Google Workspace Evidence"
+    type: "multiple_choice"
+    question: "Which file format is recommended for Google Workspace log exports via API for forensic analysis?"
+    options:
+      - "CSV"
+      - "XML"
+      - "JSON"
+      - "PST"
+    correct_answer: "JSON"
+    explanation: "JSON format is recommended for API log exports as it provides more detailed information and is easier to manipulate when ingesting logs into analysis platforms."
+
+  - category: "Google Workspace Evidence"
+    type: "multiple_choice"
+    question: "What is the maximum number of events that can be exported from Google Workspace Admin interface in a single download?"
+    options:
+      - "10,000 or 100,000 depending on log type"
+      - "50,000 events maximum"
+      - "No limit on event extraction"
+      - "25,000 events for all log types"
+    correct_answer: "10,000 or 100,000 depending on log type"
+    explanation: "The Google Workspace Admin interface restricts downloads to either 10,000 or 100,000 events per log type, while API access has no such limitations."
+
+  - category: "Google Workspace Evidence"
+    type: "multiple_choice"
+    question: "Which tool is specifically mentioned for automated forensic analysis of Google Workspace logs?"
+    options:
+      - "ALFA (Audit Log Forensic Analysis)"
+      - "SOF-ELK"
+      - "Timeline Explorer"
+      - "Google Vault"
+    correct_answer: "ALFA (Audit Log Forensic Analysis)"
+    explanation: "ALFA (Audit Log Forensic Analysis) by Invictus IR is designed to automatically classify Google Workspace events into MITRE ATT&CK techniques and identify attack chains."
+
+  - category: "Google Workspace Attacks"
+    type: "multiple_choice"
+    question: "What is the primary advantage of OAuth-based attacks over traditional credential theft?"
+    options:
+      - "They provide administrative privileges automatically"
+      - "They don't require any user interaction"
+      - "They don't require users to enter usernames and passwords"
+      - "They bypass all security controls permanently"
+    correct_answer: "They don't require users to enter usernames and passwords"
+    explanation: "OAuth attacks are preferred by threat actors because they don't require victims to enter credentials into unknown login prompts - the attack leverages legitimate OAuth authorization flows."
+
+  - category: "Google Workspace Attacks"
+    type: "multiple_choice"
+    question: "Which log source provides the most detailed information for investigating phishing emails delivered in the last 30 days?"
+    options:
+      - "Gmail Messages"
+      - "Gmail Log Events"
+      - "Admin Audit Log"
+      - "User Log Events"
+    correct_answer: "Gmail Log Events"
+    explanation: "Gmail Log Events provide the most comprehensive fields for investigating phishing emails, including the ability to search on header fields, SPF/DKIM information, malware family types, and attachment hashes."
+
+  - category: "Google Workspace Attacks"
+    type: "multiple_choice"
+    question: "What is the recommended export format from Google Vault for email evidence?"
+    options:
+      - "PST format for Outlook compatibility"
+      - "MBOX format for versatility"
+      - "EML format for individual messages"
+      - "MSG format for metadata preservation"
+    correct_answer: "MBOX format for versatility"
+    explanation: "MBOX format is recommended as it is the most versatile and easiest to consume for analysis. It's more universally supported than PST format."
+
+  - category: "Google Workspace Attacks"
+    type: "multiple_choice"
+    question: "How long after deletion do administrators have to recover Google Drive files without a Vault license?"
+    options:
+      - "15 days"
+      - "25 days"
+      - "30 days"
+      - "45 days"
+    correct_answer: "25 days"
+    explanation: "After files are removed from the user's trash folder, administrators have an additional 25 days to recover items if they don't have a Vault license."
+
+  - category: "Google Workspace Attacks"
+    type: "multiple_choice"
+    question: "Which service allows users to export all their Google Workspace data and is enabled by default?"
+    options:
+      - "Google Transfer"
+      - "Google Takeout"
+      - "Google Export"
+      - "Google Backup"
+    correct_answer: "Google Takeout"
+    explanation: "Google Takeout (also known as 'Download Your Data') is enabled by default and allows users to export all data from their account, presenting a data exfiltration risk."
+
+  - category: "Kubernetes Forensics"
+    type: "multiple_choice"
+    question: "What is the primary purpose of a sidecar container in Kubernetes?"
+    options:
+      - "To provide backup storage for main containers"
+      - "To run with elevated privileges and monitor other containers on the node"
+      - "To handle network routing between pods"
+      - "To manage container lifecycle events"
+    correct_answer: "To run with elevated privileges and monitor other containers on the node"
+    explanation: "Sidecar containers run with elevated permissions and can see all resources used by other pods on the same node, commonly used by EDR tools for monitoring."
+
+  - category: "Google Workspace Evidence"
+    type: "multiple_choice"
+    question: "What authentication method is required to collect Google Workspace logs via API?"
+    options:
+      - "Basic authentication with username and password"
+      - "API key authentication"
+      - "OAuth client ID or Service Account"
+      - "SAML-based authentication"
+    correct_answer: "OAuth client ID or Service Account"
+    explanation: "API access to Google Workspace logs requires either OAuth client ID credentials or a Service Account set up in Google Cloud with appropriate Workspace permissions."
+
+  - category: "Google Workspace Attacks"
+    type: "multiple_choice"
+    question: "Which attack technique involves threat actors using kubectl to deploy malicious containers?"
+    options:
+      - "Container Drift (T1612)"
+      - "Deploy Container (T1610)"
+      - "Container Escape (T1611)"
+      - "API Abuse (T1552)"
+    correct_answer: "Deploy Container (T1610)"
+    explanation: "Deploy Container (T1610) involves threat actors using the Kubernetes control plane to deploy new or malicious containers, often from external repositories."
+
+  - category: "Kubernetes Forensics"
+    type: "true_false"
+    question: "By default, Kubernetes provides native log storage solutions for container and pod logs."
+    correct_answer: false
+    explanation: "Kubernetes does not provide a native log storage solution. Logging must be pushed from pods to external platforms or collected by cloud service providers."
+
+  - category: "Kubernetes Forensics"
+    type: "true_false"
+    question: "All Kubernetes nodes must be able to communicate with each other without NAT."
+    correct_answer: true
+    explanation: "A fundamental requirement in Kubernetes networking is that all nodes within a cluster must communicate with each other without Network Address Translation (NAT) for seamless pod-to-pod communication."
+
+  - category: "Google Workspace Fundamentals"
+    type: "true_false"
+    question: "Google Workspace stores data globally distributed by default, but can be restricted to specific regions."
+    correct_answer: true
+    explanation: "Google Workspace defaults to global data distribution but offers specific regional options (United States or Europe) for organizations that require data to be held in specific regions."
+
+  - category: "Google Workspace Evidence"
+    type: "true_false"
+    question: "Google Workspace logs collected via API are always in UTC format, while Admin Console exports use the user's local timezone."
+    correct_answer: true
+    explanation: "API-collected logs provide timestamps in UTC format, while logs from the Workspace admin interface display times in the local timezone of the user extracting the logs."
+
+  - category: "Google Workspace Evidence"
+    type: "true_false"
+    question: "Takeout audit logs are accessible via the Google Workspace Admin SDK API."
+    correct_answer: false
+    explanation: "Takeout audit logs are one of the few forensically relevant logs that are not currently accessible via the Google Workspace API and must be collected through the Admin Console."
+
+  - category: "Google Workspace Attacks"
+    type: "true_false"
+    question: "Gmail automatically blocks executable files even when they are inside password-protected zip files."
+    correct_answer: true
+    explanation: "Gmail will block prohibited attachment types even inside compressed files and will attempt to brute force password-protected files with common passwords like 'infected'."
+
+  - category: "Google Workspace Attacks"
+    type: "true_false"
+    question: "OAuth tokens are automatically revoked when a user changes their password in Google Workspace."
+    correct_answer: true
+    explanation: "Google Workspace automatically revokes OAuth tokens when users change their passwords, though IMAP access can take up to 1 hour to age out."
+
+  - category: "Kubernetes Forensics"
+    type: "true_false"
+    question: "Container logs are typically stored at the pod level for long-term retention in Kubernetes."
+    correct_answer: false
+    explanation: "Logging is not intended to be stored at the pod, node, or container level since these components are ephemeral. Logs should be exported to external platforms."
+
+  - category: "Google Workspace Evidence"
+    type: "true_false"
+    question: "Google Vault can be used to search and export Gmail emails that were created in confidential mode."
+    correct_answer: true
+    explanation: "Google Vault allows searching and exporting of Gmail email messages even if they were created in confidential mode, providing access to this normally restricted content for investigations."
+
+  - category: "Google Workspace Attacks"
+    type: "true_false"
+    question: "Customer Takeout can only be performed by organizations with more than 1000 active users."
+    correct_answer: false
+    explanation: "Customer Takeout can only be performed on Google Workspace organizations with less than 1000 active user accounts, not more than 1000."

@@ -1,0 +1,287 @@
+# FOR509 Training Day 2 Questions
+metadata:
+  title: "FOR509 Day 2 Practice Questions"
+  created_by: "LLM Assistant"
+  content_source: "FOR509 Training Materials Day 2"
+  question_count: 30
+
+questions:
+  - category: "Azure Fundamentals"
+    type: "multiple_choice"
+    question: "What is the top level of the Azure hierarchy that represents an organization?"
+    options:
+      - "Subscription"
+      - "Management Group"
+      - "Tenant"
+      - "Resource Group"
+    correct_answer: "Tenant"
+    explanation: "The Azure Tenant represents an organization and is associated with a dedicated Microsoft Entra ID instance that provides identity and access management."
+
+  - category: "Azure Fundamentals"
+    type: "multiple_choice"
+    question: "Which Azure service provides the management layer for creating, updating, and deleting resources?"
+    options:
+      - "Azure Portal"
+      - "Azure Resource Manager"
+      - "Azure CLI"
+      - "Azure PowerShell"
+    correct_answer: "Azure Resource Manager"
+    explanation: "Azure Resource Manager provides a management layer that enables creation, updating, and deletion of resources, and can take instructions from various interfaces like Portal, CLI, and PowerShell."
+
+  - category: "Azure Log Sources"
+    type: "multiple_choice"
+    question: "What is the default retention period for Entra ID sign-in logs in the Azure portal for Enterprise-level licenses?"
+    options:
+      - "7 days"
+      - "30 days"
+      - "90 days"
+      - "1 year"
+    correct_answer: "30 days"
+    explanation: "For Enterprise-level licenses, sign-in logs are retained for 30 days in the portal. Business-level licenses are limited to 7 days, and government customers get 90 days."
+
+  - category: "Azure VMs, Networking, and Storage"
+    type: "multiple_choice"
+    question: "Which Azure VM series is specifically designed for GPU-enabled workloads and commonly targeted for crypto mining?"
+    options:
+      - "D-series (General Purpose)"
+      - "F-series (Compute Optimized)"
+      - "N-series (Graphics Optimized)"
+      - "L-series (Storage Optimized)"
+    correct_answer: "N-series (Graphics Optimized)"
+    explanation: "N-series VMs (NC, NV, ND) have high-end GPUs and are often targeted by threat actors for crypto mining operations due to their graphics processing capabilities."
+
+  - category: "Azure Virtual Machine Logs"
+    type: "multiple_choice"
+    question: "Which Windows Azure Diagnostics table contains Windows event logs?"
+    options:
+      - "WADPerformanceCountersTable"
+      - "WADWindowsEventLogsTable"
+      - "WADIISLogTable"
+      - "WADDiagnosticInfrastructureLogsTable"
+    correct_answer: "WADWindowsEventLogsTable"
+    explanation: "WADWindowsEventLogsTable is the most interesting table for incident response and forensics as it contains Windows event logs collected by the diagnostics extension."
+
+  - category: "Azure In-cloud IR"
+    type: "multiple_choice"
+    question: "What is the first step when creating a forensic image of an Azure VM?"
+    options:
+      - "Stop the VM"
+      - "Create a snapshot of the victim's OS disk"
+      - "Download the VHD file"
+      - "Create a new forensic VM"
+    correct_answer: "Create a snapshot of the victim's OS disk"
+    explanation: "The first step is to create a snapshot of the victim's OS disk, which creates a point-in-time copy without affecting the running VM."
+
+  - category: "Azure Log Sources"
+    type: "multiple_choice"
+    question: "Which query language is used in Azure Log Analytics workspace?"
+    options:
+      - "SQL"
+      - "KQL (Kusto Query Language)"
+      - "PowerShell"
+      - "JSON"
+    correct_answer: "KQL (Kusto Query Language)"
+    explanation: "Azure Log Analytics workspace uses KQL (Kusto Query Language), which is very similar to SQL and allows powerful querying and analysis of log data."
+
+  - category: "Azure VMs, Networking, and Storage"
+    type: "multiple_choice"
+    question: "At what intervals are NSG Flow Logs collected in Azure?"
+    options:
+      - "30 seconds"
+      - "1 minute"
+      - "5 minutes"
+      - "15 minutes"
+    correct_answer: "1 minute"
+    explanation: "NSG Flow Logs are collected at fixed 1-minute intervals, which is not configurable. This provides detailed network traffic visibility."
+
+  - category: "Azure Fundamentals"
+    type: "multiple_choice"
+    question: "Which built-in Azure RBAC role provides the highest level of permissions for investigation purposes?"
+    options:
+      - "Reader"
+      - "Contributor"
+      - "Owner"
+      - "Security Admin"
+    correct_answer: "Owner"
+    explanation: "When performing an investigation, it's preferable to be granted Owner permission for maximum flexibility to access and manage all resources."
+
+  - category: "Azure VMs, Networking, and Storage"
+    type: "multiple_choice"
+    question: "Which storage operation should be monitored to detect potential data exfiltration from Azure storage accounts?"
+    options:
+      - "CreateBlob"
+      - "GetBlob"
+      - "DeleteBlob"
+      - "ListBlobs"
+    correct_answer: "GetBlob"
+    explanation: "For tracking data exfiltration, investigators should focus on the GetBlob operation in StorageRead logs, as this indicates files being downloaded from storage accounts."
+
+  - category: "Azure Virtual Machine Logs"
+    type: "multiple_choice"
+    question: "What is the maximum time limit for Azure VM Run Command script execution?"
+    options:
+      - "20 minutes"
+      - "45 minutes"
+      - "90 minutes"
+      - "2 hours"
+    correct_answer: "90 minutes"
+    explanation: "Azure VM Run Commands have a maximum execution time of 90 minutes, after which the script will time out. The minimum execution time is about 20 seconds."
+
+  - category: "Azure Log Sources"
+    type: "multiple_choice"
+    question: "Which diagnostic setting destination allows real-time data ingestion for sending logs to external SIEMs?"
+    options:
+      - "Storage Account"
+      - "Log Analytics workspace"
+      - "Event Hub"
+      - "Azure Monitor"
+    correct_answer: "Event Hub"
+    explanation: "Event Hub is a real-time data ingestion service capable of ingesting millions of events per second, making it ideal for sending logs to non-Azure destinations like external SIEMs."
+
+  - category: "Azure VMs, Networking, and Storage"
+    type: "multiple_choice"
+    question: "What are the two main access credential options for Azure storage accounts?"
+    options:
+      - "Username/Password and Certificate"
+      - "Access Key and Shared Access Signature (SAS)"
+      - "Service Principal and Managed Identity"
+      - "OAuth Token and API Key"
+    correct_answer: "Access Key and Shared Access Signature (SAS)"
+    explanation: "Azure storage accounts can be accessed using Access Keys (two per account for key rotation) or Shared Access Signature (SAS) tokens that provide time-limited, restricted access."
+
+  - category: "Azure Fundamentals"
+    type: "multiple_choice"
+    question: "What format do Azure resource ID strings follow?"
+    options:
+      - "/tenant/subscription/resourcegroup/resource"
+      - "/subscription/resourcegroup/provider/resourcetype/resourcename"
+      - "/resourcegroup/provider/resource/subscription"
+      - "/provider/subscription/resourcegroup/resource"
+    correct_answer: "/subscription/resourcegroup/provider/resourcetype/resourcename"
+    explanation: "Azure resource ID strings follow the format: /subscription/<SubscriptionId>/resourceGroups/<resourcegroupname>/providers/<providername>/<resourceType>/<resourcename>."
+
+  - category: "Azure Virtual Machine Logs"
+    type: "multiple_choice"
+    question: "On Linux systems, where are executed Azure Run Command scripts stored?"
+    options:
+      - "/var/log/azure"
+      - "/var/lib/waagent/run-command/download/"
+      - "/tmp/azure-scripts"
+      - "/opt/azure/run-command"
+    correct_answer: "/var/lib/waagent/run-command/download/"
+    explanation: "On Linux systems, all executed Azure Run Command scripts are stored in /var/lib/waagent/run-command/download/, providing valuable forensic artifacts."
+
+  - category: "Azure In-cloud IR"
+    type: "multiple_choice"
+    question: "Which Microsoft tool is recommended for faster snapshot downloads compared to web browsers?"
+    options:
+      - "Azure CLI"
+      - "Azure PowerShell"
+      - "AzCopy"
+      - "Azure Storage Explorer"
+    correct_answer: "AzCopy"
+    explanation: "AzCopy is a free, multi-threaded Microsoft utility that is significantly faster than web browser downloads for transferring large files like VM snapshots."
+
+  - category: "Azure Log Sources"
+    type: "multiple_choice"
+    question: "Which Azure log category in the subscription/activity log is most important for incident response?"
+    options:
+      - "Service Health"
+      - "Administrative"
+      - "Security"
+      - "Policy"
+    correct_answer: "Administrative"
+    explanation: "The Administrative category is most important for IR as it records the creation, modification, and deletion of resources within each subscription."
+
+  - category: "Azure VMs, Networking, and Storage"
+    type: "multiple_choice"
+    question: "What does the 'E' state indicate in NSG Flow Log version 2 parameters?"
+    options:
+      - "Error in flow processing"
+      - "End of flow with statistics provided"
+      - "Encrypted traffic flow"
+      - "External traffic source"
+    correct_answer: "End of flow with statistics provided"
+    explanation: "In NSG Flow Log version 2, 'E' indicates End - when a flow is terminated and statistics are provided. Other states are 'B' (Begin) and 'C' (Continuing)."
+
+  - category: "Azure Virtual Machine Logs"
+    type: "multiple_choice"
+    question: "Which syslog facility should be monitored for SSH authentication events on Linux systems?"
+    options:
+      - "LOG_KERN"
+      - "LOG_AUTHPRIV"
+      - "LOG_CRON"
+      - "LOG_DAEMON"
+    correct_answer: "LOG_AUTHPRIV"
+    explanation: "LOG_AUTHPRIV facility handles authentication and authorization events, including SSH logins, making it crucial for monitoring user access to Linux systems."
+
+  - category: "Azure In-cloud IR"
+    type: "multiple_choice"
+    question: "What is Azure Sentinel?"
+    options:
+      - "A network monitoring tool"
+      - "A cloud-native SIEM/SOAR solution"
+      - "A backup service"
+      - "A vulnerability scanner"
+    correct_answer: "A cloud-native SIEM/SOAR solution"
+    explanation: "Azure Sentinel is a scalable, cloud-native Security Information and Event Management (SIEM) and Security Orchestration Automated Response (SOAR) solution."
+
+  - category: "Azure Fundamentals"
+    type: "true_false"
+    question: "Management Groups are required for every Azure tenant and must be implemented before creating subscriptions."
+    correct_answer: false
+    explanation: "Management Groups are optional and are not implemented by every company. They are useful for organizing subscriptions in enterprise accounts but are not required."
+
+  - category: "Azure Log Sources"
+    type: "true_false"
+    question: "Azure automatically configures most log sources by default to minimize storage costs."
+    correct_answer: false
+    explanation: "Most Azure log sources are not automatically configured by default. Storage must be allocated for logs, which implies recurring costs, so they must be manually enabled."
+
+  - category: "Azure VMs, Networking, and Storage"
+    type: "true_false"
+    question: "Azure automatically creates a Network Security Group (NSG) when you create a virtual machine."
+    correct_answer: true
+    explanation: "Azure automatically creates a network security group with the naming convention <machine-name>-nsg when you create a virtual machine to provide basic firewall protection."
+
+  - category: "Azure Virtual Machine Logs"
+    type: "true_false"
+    question: "Windows Azure Diagnostics logs are stored in JSON format like other Azure logs."
+    correct_answer: false
+    explanation: "WAD logs are stored in NoSQL tables in the storage account, not in JSON format like other Azure logs. This makes them more difficult to access and process."
+
+  - category: "Azure Log Sources"
+    type: "true_false"
+    question: "The correlationId field can be used to track sequences of events that make up a single operation across Azure logs."
+    correct_answer: true
+    explanation: "The correlationId field is found in nearly all Azure logs and is very useful to track the sequence of events that make up an operation, as many operations generate multiple log entries."
+
+  - category: "Azure VMs, Networking, and Storage"
+    type: "true_false"
+    question: "NSG Flow Logs capture the actual packet payload content for forensic analysis."
+    correct_answer: false
+    explanation: "NSG Flow Logs only capture metadata about network flows (IPs, ports, protocols, timing) but do not contain the actual packet payload content."
+
+  - category: "Azure In-cloud IR"
+    type: "true_false"
+    question: "VM snapshots can be taken while the virtual machine is running without impacting performance."
+    correct_answer: true
+    explanation: "VM snapshots are created at the hypervisor level and have no impact on the running VM. They can be taken whether the VM is running or shut down."
+
+  - category: "Azure Virtual Machine Logs"
+    type: "true_false"
+    question: "Azure Run Commands execute with elevated privileges by default on both Windows and Linux systems."
+    correct_answer: true
+    explanation: "Azure Run Commands execute as SYSTEM on Windows and as root (elevated user) on Linux by default, providing high-privilege access to the target system."
+
+  - category: "Azure VMs, Networking, and Storage"
+    type: "true_false"
+    question: "Storage account logs are enabled by default to track potential data exfiltration."
+    correct_answer: false
+    explanation: "Storage account logs are not enabled by default. Without enabling StorageRead logs, there will be no evidence of data exfiltration from storage accounts."
+
+  - category: "Azure Log Sources"
+    type: "true_false"
+    question: "Log Analytics workspace can only accept data from Azure resources and cannot ingest non-Azure logs."
+    correct_answer: false
+    explanation: "Log Analytics workspace can collect and aggregate logs from various data sources, both Azure-based and non-Azure, making it a centralized logging solution."

@@ -1,0 +1,292 @@
+metadata:
+  title: "FOR509 Day 5 Practice Questions"
+  created_by: "LLM Assistant"
+  content_source: "FOR509 Training Materials Day 5"
+  question_count: 30
+
+questions:
+  - category: "Google Cloud Fundamentals"
+    type: "multiple_choice"
+    question: "In Google Cloud's resource hierarchy, what is the correct order from highest to lowest level?"
+    options:
+      - "Projects > Folders > Organization > Resources"
+      - "Organization > Projects > Folders > Resources"
+      - "Organization > Folders > Projects > Resources"
+      - "Folders > Organization > Projects > Resources"
+    correct_answer: "Organization > Folders > Projects > Resources"
+    explanation: "Google Cloud hierarchy flows from Organization (highest) down to Folders, then Projects, and finally Resources (lowest level)."
+
+  - category: "Google Cloud Fundamentals"
+    type: "multiple_choice"
+    question: "What is the fundamental difference between Google Cloud IAM and traditional IAM models like Active Directory?"
+    options:
+      - "Google Cloud uses role-based access control while AD uses attribute-based"
+      - "Policies are applied to Resources, not Principals in Google Cloud"
+      - "Google Cloud doesn't support group-based permissions"
+      - "Service accounts don't exist in Google Cloud"
+    correct_answer: "Policies are applied to Resources, not Principals in Google Cloud"
+    explanation: "Unlike traditional IAM where you query a user to see their permissions, in Google Cloud you must query Resources to see which Principals have access to them."
+
+  - category: "Google Cloud Fundamentals"
+    type: "multiple_choice"
+    question: "Which Google Cloud Basic Role provides 'actAs' permissions that can lead to privilege escalation?"
+    options:
+      - "Viewer"
+      - "Browser"
+      - "Editor"
+      - "Owner"
+    correct_answer: "Editor"
+    explanation: "Editor role includes 'actAs' permissions, allowing users to impersonate other accounts and potentially escalate to Owner privileges by acting as Owner accounts."
+
+  - category: "Google Cloud Fundamentals"
+    type: "multiple_choice"
+    question: "What percentage of compromised Google Cloud accounts had the Editor role assigned according to the April 2023 Threat Horizons Report?"
+    options:
+      - "25%"
+      - "35%"
+      - "44%"
+      - "55%"
+    correct_answer: "44%"
+    explanation: "The April 2023 Google Threat Horizons Report showed that 44% of compromised user accounts had the Editor role assigned, highlighting the risks of Basic Roles."
+
+  - category: "Google Cloud Logging"
+    type: "multiple_choice"
+    question: "Which Google Cloud audit log type cannot be disabled and is stored for free?"
+    options:
+      - "Data Access Logs"
+      - "Admin Activity Logs"
+      - "Policy Denied Audit Logs"
+      - "Access Transparency Logs"
+    correct_answer: "Admin Activity Logs"
+    explanation: "Admin Activity Logs are stored in the _Required bucket, cannot be turned off, and are stored for 400 days for free."
+
+  - category: "Google Cloud Logging"
+    type: "multiple_choice"
+    question: "What is the retention period for logs in the _Default bucket before charges apply?"
+    options:
+      - "7 days"
+      - "30 days"
+      - "90 days"
+      - "400 days"
+    correct_answer: "30 days"
+    explanation: "The _Default bucket stores logs for 30 days at no cost, after which storage charges apply for extended retention."
+
+  - category: "Google Cloud Logging"
+    type: "multiple_choice"
+    question: "Which command-line tool is used to collect logs from Google Cloud logging buckets?"
+    options:
+      - "gsutil"
+      - "gcloud"
+      - "gcloudsdk"
+      - "gcp-cli"
+    correct_answer: "gcloud"
+    explanation: "gcloud is the command-line utility for interacting with Google Cloud services, including log collection with the 'gcloud logging read' command."
+
+  - category: "Google Cloud Logging"
+    type: "multiple_choice"
+    question: "What permission is required to access audit logs via gcloud?"
+    options:
+      - "Logs Viewer"
+      - "Private Logs Viewer"
+      - "Admin Logs Viewer"
+      - "Security Logs Viewer"
+    correct_answer: "Private Logs Viewer"
+    explanation: "Private Logs Viewer permission is required to access audit logs, while Logs Viewer only provides access to non-sensitive logs."
+
+  - category: "Google Cloud Logging"
+    type: "multiple_choice"
+    question: "What is the maximum number of log records that can be exported from Log Explorer in a single operation?"
+    options:
+      - "1,000"
+      - "10,000"
+      - "50,000"
+      - "100,000"
+    correct_answer: "10,000"
+    explanation: "Log Explorer limits exports to 10,000 records maximum, requiring the use of gcloud CLI for larger data extractions."
+
+  - category: "Google Cloud VM & Storage"
+    type: "multiple_choice"
+    question: "What was the most common attack vector against Google Cloud VMs according to the Threat Horizons reports?"
+    options:
+      - "SQL injection attacks"
+      - "Cryptocurrency mining"
+      - "DDoS attacks"
+      - "Data exfiltration"
+    correct_answer: "Cryptocurrency mining"
+    explanation: "Cryptocurrency mining represented 86% of attacks in 2021 and 65% in H1 2024, making it the most common attack against Google Cloud VMs."
+
+  - category: "Google Cloud VM & Storage"
+    type: "multiple_choice"
+    question: "Which Google Cloud agent is recommended for collecting VM logs and is based on Fluent Bit?"
+    options:
+      - "Legacy Logging Agent"
+      - "Google Cloud Monitoring Agent"
+      - "Ops Agent"
+      - "Cloud Logging Agent"
+    correct_answer: "Ops Agent"
+    explanation: "Ops Agent is the current recommended agent, based on Fluent Bit, with lower memory footprint and better scalability than the Legacy Logging Agent."
+
+  - category: "Google Cloud VM & Storage"
+    type: "multiple_choice"
+    question: "When exporting a VM disk image from Google Cloud, what important forensic limitation exists?"
+    options:
+      - "The image is encrypted and cannot be decrypted"
+      - "Only allocated sectors are included, no unallocated space"
+      - "The export process modifies file timestamps"
+      - "Images can only be exported in proprietary Google format"
+    correct_answer: "Only allocated sectors are included, no unallocated space"
+    explanation: "Google Cloud disk exports only include allocated data, meaning file carving from unallocated space is not possible."
+
+  - category: "Google Cloud VM & Storage"
+    type: "multiple_choice"
+    question: "According to threat intelligence, malware is approximately how many times more common in Storage Buckets than on VMs?"
+    options:
+      - "2 times"
+      - "3 times"
+      - "4 times"
+      - "5 times"
+    correct_answer: "3 times"
+    explanation: "Malware is approximately 3 times more prevalent in Storage Buckets than in Virtual Machines, making bucket security critical."
+
+  - category: "Google Cloud VM & Storage"
+    type: "multiple_choice"
+    question: "What percentage of organizations have at least one Storage Bucket containing PII data?"
+    options:
+      - "15%"
+      - "21%"
+      - "28%"
+      - "35%"
+    correct_answer: "21%"
+    explanation: "21% of organizations have at least one Storage Bucket containing Personally Identifiable Information (PII), making these attractive targets for attackers."
+
+  - category: "Google Cloud VM & Storage"
+    type: "multiple_choice"
+    question: "Which privilege escalation scenario involves the 'legacyBucketOwner' role?"
+    options:
+      - "VM to Storage Admin escalation"
+      - "Storage bucket privilege escalation via setIamPolicy"
+      - "Network admin to organization admin"
+      - "Compute admin to billing admin"
+    correct_answer: "Storage bucket privilege escalation via setIamPolicy"
+    explanation: "The legacyBucketOwner role includes storage.buckets.setIamPolicy permission, allowing attackers to escalate privileges on storage buckets within a project."
+
+  - category: "Google Cloud Network Forensics"
+    type: "multiple_choice"
+    question: "What is a key limitation of Google Cloud VPC Flow Logs for forensic analysis?"
+    options:
+      - "They only capture TCP traffic"
+      - "They are sampled, not 100% coverage"
+      - "They don't include IP addresses"
+      - "They are only available for 24 hours"
+    correct_answer: "They are sampled, not 100% coverage"
+    explanation: "VPC Flow Logs use primary and secondary sampling, meaning they don't provide 100% coverage of all network traffic, unlike some other cloud providers."
+
+  - category: "Google Cloud Network Forensics"
+    type: "multiple_choice"
+    question: "In Google Cloud VPC networking, which traffic types are NOT supported?"
+    options:
+      - "TCP and UDP unicast"
+      - "IPv6, broadcast, and multicast"
+      - "HTTPS and HTTP traffic"
+      - "SSH and RDP protocols"
+    correct_answer: "IPv6, broadcast, and multicast"
+    explanation: "Google Cloud VPCs only support IPv4 unicast traffic; IPv6, broadcast, and multicast traffic are not supported within VPCs."
+
+  - category: "Google Cloud Network Forensics"
+    type: "multiple_choice"
+    question: "According to the 2023 Threat Horizons report, what percentage of Google Cloud incidents resulted from weak or absent passwords on SSH and RDP?"
+    options:
+      - "25%"
+      - "40%"
+      - "Over 50%"
+      - "75%"
+    correct_answer: "Over 50%"
+    explanation: "In 2023, Google observed that over half of Google Cloud incidents resulted from threat actors exploiting weak or absent passwords on SSH and RDP protocols."
+
+  - category: "Google Cloud Network Forensics"
+    type: "multiple_choice"
+    question: "What is the relationship between VPC Flow Logs and Firewall Logs that can cause apparent conflicts?"
+    options:
+      - "They use different timestamp formats"
+      - "Flow logs are captured before firewall rule inspection"
+      - "Firewall logs include encrypted traffic that flow logs miss"
+      - "They monitor different network layers"
+    correct_answer: "Flow logs are captured before firewall rule inspection"
+    explanation: "Flow logs capture egress traffic from VMs before firewall rules are inspected, so traffic may appear in flow logs but be blocked by firewall rules."
+
+  - category: "Google Cloud Network Forensics"
+    type: "multiple_choice"
+    question: "Which Google Cloud service allows full packet capture for forensic analysis?"
+    options:
+      - "VPC Flow Logs"
+      - "Firewall Rules Logging"
+      - "Packet Mirroring"
+      - "Network Intelligence Center"
+    correct_answer: "Packet Mirroring"
+    explanation: "Packet Mirroring allows full packet capture from VMs, clusters, or VPCs, with traffic sent to backend instances for processing and analysis."
+
+  - category: "Google Cloud Fundamentals"
+    type: "true_false"
+    question: "In Google Cloud IAM, you can query a Principal to see all the permissions they have across the organization."
+    correct_answer: false
+    explanation: "Unlike traditional IAM models, Google Cloud applies policies to Resources, not Principals. You must query each Resource to see which Principals have access to it."
+
+  - category: "Google Cloud Fundamentals"
+    type: "true_false"
+    question: "Google Cloud Service Accounts are automatically created with Editor-level permissions for the entire project by default."
+    correct_answer: true
+    explanation: "By default, when Service Accounts are created (like for Kubernetes), they often receive Editor-level permissions for the entire project, which can be a security risk."
+
+  - category: "Google Cloud Logging"
+    type: "true_false"
+    question: "All Google Cloud audit logs are automatically sent to the Google Cloud Logging API regardless of any exclusions or restrictions."
+    correct_answer: true
+    explanation: "Every log generated is sent to the Logging API first; Log Sinks then determine whether to route or drop the events based on inclusion/exclusion rules."
+
+  - category: "Google Cloud Logging"
+    type: "true_false"
+    question: "Data Access audit logs are enabled by default for all Google Cloud services."
+    correct_answer: false
+    explanation: "Data Access audit logs are not enabled by default (except for BigQuery) and must be manually activated due to the volume of data and potential storage costs."
+
+  - category: "Google Cloud Logging"
+    type: "true_false"
+    question: "Google Cloud provides 50 GiB of free log ingestion per project per month."
+    correct_answer: true
+    explanation: "Google provides 50 gibibytes of free log ingestion data per project, though logs in the _Required bucket don't count toward this limit."
+
+  - category: "Google Cloud VM & Storage"
+    type: "true_false"
+    question: "The Google Ops Agent can be used to collect logs from AWS VMs and send them to Google Cloud Logging."
+    correct_answer: true
+    explanation: "The Google Ops Agent can be installed on AWS Linux and Windows VMs using an AWS connector, allowing multi-cloud log collection to Google Cloud."
+
+  - category: "Google Cloud VM & Storage"
+    type: "true_false"
+    question: "Google Cloud Storage Bucket names are considered secret and are not publicly accessible."
+    correct_answer: false
+    explanation: "Storage Bucket names are globally and publicly visible/guessable, which is why they shouldn't contain sensitive information and are targets for dictionary attacks."
+
+  - category: "Google Cloud VM & Storage"
+    type: "true_false"
+    question: "Object-level auditing for Google Cloud Storage Buckets is enabled by default."
+    correct_answer: false
+    explanation: "Object-level auditing (Data Read logging) for Cloud Storage is not enabled by default due to the significant volume of logs it produces and associated costs."
+
+  - category: "Google Cloud Network Forensics"
+    type: "true_false"
+    question: "VPC Firewall logging is enabled by default when firewall rules are created."
+    correct_answer: false
+    explanation: "Firewall logging is disabled by default and must be manually enabled per rule, even though it's crucial for network forensics."
+
+  - category: "Google Cloud Network Forensics"
+    type: "true_false"
+    question: "Google Cloud's default VPC firewall rules allow all internal traffic within the VPC without restrictions."
+    correct_answer: true
+    explanation: "By default, VPC firewall rules allow all internal traffic within the VPC with no lateral movement restrictions, which can be a security risk."
+
+  - category: "Google Cloud Network Forensics"
+    type: "true_false"
+    question: "VPC Flow Logs in Google Cloud capture both TCP and UDP traffic but exclude ICMP traffic."
+    correct_answer: true
+    explanation: "VPC Flow Logs only capture TCP and UDP traffic types; other network protocols like ICMP are not captured in flow logs."
