@@ -7,3 +7,11 @@ courses:
       "Day 3 - AWS Fundamentals & IR": "for509/for509_day3_questions.yml"
       "Day 4 - Kubernetes & Google Workspace": "for509/for509_day4_questions.yml"
       "Day 5 - Google Cloud Platform": "for509/for509_day5_questions.yml"
+  "FOR610 Reverse-Engineering Malware":
+    description: "SANS Reverse-Engineering Malware: Malware Analysis Tools and Techniques (2023)"
+    modules:
+      "Day 1 - Malware Analysis Fundamentals": "for610/for610_day1_questions.yml"
+      "Day 2 - Reversing Malicious Code": "for619/for610_day2_questions.yml"
+      "Day 3 - Analyzing Malicious Documents and Scripts": "for610/for509_day3_questions.yml"
+      "Day 4 - In-Depth Malware Analysis": "for610/for610_day4_questions.yml"
+      "Day 5 - Examining Self-Defending Malware": "for610/for610_day5_questions.yml"
